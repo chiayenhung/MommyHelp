@@ -1,0 +1,16 @@
+extends ../base
+
+block content
+  .row.login
+    .panel.panel-primary
+      .panel-heading Login
+      .panel-body
+        form
+          .input-group
+            span.input-group-addon username
+            input.form-control
+          .input-group
+            span.input-group-addon password
+            input.form-control
+          button.btn.btn-primary submit
+          a(href="signup") Signup

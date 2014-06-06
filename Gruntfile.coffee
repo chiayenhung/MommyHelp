@@ -9,6 +9,8 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-contrib-concat'
+  grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-env'
   grunt.loadNpmTasks 'grunt-mocha-test'
 
@@ -36,6 +38,13 @@ module.exports = (grunt) ->
 
     clean:
       development: "#{PRODUCTION_PATH}"
+      js: ["#{PRODUCTION_PATH}/js", "{PRODUCTION_PATH}/js/main.js"]
+      css: ["#{PRODUCTION_PATH}/css", "#{PRODUCTION_PATH}/css/main.css"]
+
+    copy:
+      imgs:
+        src: "#{DEV_PATH}/imgs/*"
+        dest: "#{PRODUCTION_PATH}/"
 
     sass:
       development:
@@ -43,7 +52,7 @@ module.exports = (grunt) ->
           expand: true
           cwd: "#{DEV_PATH}/sass"
           src: ['*.sass']
-          dest: "#{PRODUCTION_PATH}/"
+          dest: "#{PRODUCTION_PATH}/css"
           ext: ".css"
         ]  
 
@@ -59,16 +68,24 @@ module.exports = (grunt) ->
           ext: ".js"
         ]
 
+    concat:
+      js:
+        src: ["#{DEV_PATH}/lib/js/*.js", "#{PRODUCTION_PATH}/js/*.js"]
+        dest: "#{PRODUCTION_PATH}/main.js"
+      css:
+        src: ["#{DEV_PATH}/lib/css/*.css", "#{PRODUCTION_PATH}/css/*.css"]
+        dest: "#{PRODUCTION_PATH}/main.css"
+
     watch:
       express: 
         files:  [ 'server/**/*.coffee' ]
         tasks:  ['express:development' ]
       sass:
         files: ['**/*.sass']
-        tasks: [ 'clean', 'sass', 'coffee']
+        tasks: [ 'clean:css', 'sass', 'concat:css']
       coffee:
         files: ['**/*.coffee']
-        tasks: [ 'clean', 'sass', 'coffee']
+        tasks: [ 'clean:js', 'coffee', 'concat:js']
 
     env:
       development:
@@ -89,5 +106,7 @@ module.exports = (grunt) ->
     'express:development'
     'sass'
     'coffee'
+    'copy:imgs'
+    'concat'
     'watch'
   ]
