@@ -1,5 +1,6 @@
 express = require 'express'
 mongoose = require 'mongoose'
+bodyParser = require 'body-parser'
 
 # var datasetController = require ('./controllers/dataset_controller');
 indexController = require './controllers/index_controller'
@@ -16,7 +17,7 @@ app.set 'views', "#{__dirname}/views"
 app.set 'view engine', 'jade'
 # app.use express.cookieParser()
 # app.use express.session({secret: '1234567890QWERTY'})
-# app.use express.bodyParser()
+app.use bodyParser()
 app.use express.static("#{__dirname}/../public/")
 
 app.use '/', indexController

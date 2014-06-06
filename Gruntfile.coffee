@@ -43,7 +43,8 @@ module.exports = (grunt) ->
 
     copy:
       imgs:
-        src: "#{DEV_PATH}/imgs/*"
+        expand: true
+        src: ["#{DEV_PATH}/imgs/*.png"]
         dest: "#{PRODUCTION_PATH}/"
 
     sass:
@@ -106,7 +107,7 @@ module.exports = (grunt) ->
     'express:development'
     'sass'
     'coffee'
-    'copy:imgs'
     'concat'
+    'copy:imgs'
     'watch'
   ]

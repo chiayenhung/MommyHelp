@@ -5,11 +5,17 @@ block content
     .panel.panel-primary
       .panel-heading Signup
       .panel-body
-        form
+        form(method='post', action='/submit')
           .input-group
             span.input-group-addon username
-            input.form-control
+            input(name='username').form-control
           .input-group
             span.input-group-addon password
-            input.form-control
+            input(name='password', type='password').form-control
+          .input-group
+            span.input-group-addon comfirm
+            input(name='comfirm', type='password').form-control
+          .input-group
+            span.input-group-addon email
+            input(name='email', type='email').form-control
           button.btn.btn-primary submit
