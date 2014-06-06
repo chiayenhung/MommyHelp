@@ -1,0 +1,32 @@
+{
+  "author": "Chia-Yen Hung",
+  "name": "MommyHelp",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "0.10.28",
+    "npm":  "1.4.9"
+  },
+  "dependencies": {
+    "coffee-script": "~1.6.2",
+    "underscore": "~1.5.1",
+    "mongoose": "~3.8.x",
+    "passport": "0.1.17",
+    "passport-local": "0.1.6",
+    "express": "3.0.0rc5"
+  },
+  "devDependencies": {
+     "grunt": "~0.4.0rc7",
+     "grunt-contrib-clean": "~0.4.1",
+     "grunt-contrib-coffee": "~0.7.0",
+     "grunt-contrib-watch": "~0.1.4",
+     "grunt-contrib-sass": "~0.7.2",
+     "grunt-contrib-jade": "0.8.0",
+     "grunt-express": "~1.0.0-beta2",
+     "grunt-env": "0.4.0",
+     "chai": "~1.7.0",
+     "grunt-mocha-test": "0.6.2",
+     "request": "~2.21.0",
+     "request-json": "*"
+ }
+}
